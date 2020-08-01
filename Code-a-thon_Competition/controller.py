@@ -34,31 +34,17 @@ def toShowallDetail():
 
 
 def searchrecord():
-    empName = input('Enter employee name => ')
+    empName = input('Enter employee no => ')
     with open('eployeeDetails.csv', 'r',) as rf:
-        with open('eployeeDetails2.csv', 'a+', newline='') as wf:
-            rfile = DictReader(rf)
-            wfile = DictWriter(wf, fieldnames=['nEmployeeName','nEmployeeNo','nStreet','nCity','nState','nCode'])
-            wfile.writeheader()
-            for row in rfile:
-                if empName == row['EmployeeName'] :
-                    value = wfile.writerow({
-                        'nEmployeeName': row['EmployeeName'],
-                        'nEmployeeNo': row['EmployeeNo'],
-                        'nStreet': row['Street'],
-                        'nCity' : row['City'],
-                        'nstate': row['State'],
-                        'nCode' : row['Code']
-
-                    })
-            return value
-
-                
-# EmployeeName,EmployeeNo,Street, City,State,Code
-#  empName = input('Enter employee name => ')
-#     data=pd.read_csv('eployeeDetails.csv')
-#     oneData =  data.iloc[0][empName]
-#     if oneData:
-#         return oneData
-#     else:
-#         return ('Data not found')
+        rfile = DictReader(rf)
+        for row in rfile:
+            if int(empName) == int(row['EmployeeNo']):
+                value = {
+                    'nEmployeeName': row['EmployeeName'],
+                    'nEmployeeNo': row['EmployeeNo'],
+                    'nStreet': row['Street'],
+                    'nCity' : row['City'],
+                    'nState': row['State'],
+                    'nCode': row['Code']
+                }
+        return value
