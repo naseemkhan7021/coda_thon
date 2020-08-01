@@ -54,5 +54,5 @@ def searchrecord():
 def searchrecord():
     data=pd.read_csv('eployeeDetails.csv')
     data = data.set_index('EmployeeNo')
-    empName = int(input('Enter employee no => '))
-    return data.loc[empName]
+    empNo = int(input('Enter employee no => '))
+    return data.loc[empNo]
