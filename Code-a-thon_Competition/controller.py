@@ -32,7 +32,8 @@ def toShowallDetail():
     data=pd.read_csv('eployeeDetails.csv')
     return data
 
-
+'''
+This way is long
 def searchrecord():
     empName = input('Enter employee no => ')
     with open('eployeeDetails.csv', 'r',) as rf:
@@ -48,3 +49,10 @@ def searchrecord():
                     'nCode': row['Code']
                 }
         return value
+ '''
+# using pandas   (sort fuction)
+def searchrecord():
+    data=pd.read_csv('eployeeDetails.csv')
+    data = data.set_index('EmployeeNo')
+    empName = int(input('Enter employee no => '))
+    return data.loc[empName]
